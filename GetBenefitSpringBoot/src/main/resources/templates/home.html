@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"></meta>
+<title>GetBenefitHome</title>
+<link rel="stylesheet" type="text/css"  href="../static/stylesheet/style.css" th:href="@{/stylesheet/style.css}" media="all"></link>
+<style>
+ body {color: #36383a ; background :#36383a ;font:14px Helvetica,Arial,Sans-serif;} 
+
+
+</style>
+<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+</head>
+<body class="body">
+<div id="header">
+<a href=""><img src="https://s11.postimg.org/tt5t2vtwj/logo1.png" width="400" height="100" ></img></a>
+
+
+</div>
+<div id="navigation">
+<ul>
+	<li><a href="">Home</a></li>
+	<li><a href="">About</a></li>
+	<li><a href="">Contact</a></li>
+</ul>
+</div>
+
+<div id="container">
+<div id ="content">
+<div id="contentleft"></div>
+<h1> Welcome to Getbenefit.in </h1>
+
+<P> Earn While you Shop from Flipkart,Amazon</P>
+<div id="flipkart" style="display:table-cell; vertical-align:middle; text-align:center">
+<a href=""><img src="http://www.underconsideration.com/brandnew/archives/flipkart_logo_detail.jpg" width="150" height="60"  ></img> </a> 
+<br></br>
+<b>Clothing:10%</b> Cashback <br></br>
+<b>Electronics:5%</b> Cashback <br></br>
+<b>Others:minimum 3%</b> Cashback <br></br>
+<br></br>
+<!-- <button class="button" ></button> -->
+<!-- <input class="button" type="button"  onclick="location.href='https://www.flipkart.com/?affid=getbenifi';" value="Activate Deal" /> -->
+<a href="https://www.flipkart.com/?affid=getbenifi" target="_blank"><input class="button" type="button" value="Activate Deal"></input></a>
+
+</div>
+
+
+<div id="sidebar">
+<div class="sidebar-element">
+	<h3>Account</h3>
+	<form action="#" th:action="@{/getbenefit/validate}" th:object="${customers}" method="post">
+<label>EmailId <input type="text" th:feild="*{emailid}" /></label><br></br>
+ <label>Password <input type="text" th:feild="*{password}" /></label><br> </br>
+ <div style="text-align:center"> 
+ <input type="submit" value="Login"></input>
+  <!-- <button class="button" type="submit" value="Login"></button>  --> </div>
+ 
+
+</form>
+	 <!-- <p><button class="button" onclick="showLogin();">Login</button></p>
+	<p id= "displaylogin">  </p>  -->
+	<p><button class="button" onclick="showSignup();">SignUp</button></p>
+	<p><span id="displaysignup"></span></p>
+ </div>
+<div class="sidebar-element">
+<h3> List</h3>
+<ul>
+<li><a href="">Flipkart</a></li>
+<li><a href="">Amazon</a></li>
+<li><a href="">Jabong</a></li>
+</ul>
+</div> 
+</div> <!-- sidebar -->
+</div><!-- content -->
+</div><!-- container -->
+
+<div id="footer">
+<ul>
+	<li><a href="">Home</a></li>
+	<li><a href="">About</a></li>
+	<li><a href="">Contact</a></li>
+</ul>
+</div>
+</body>
+</html>

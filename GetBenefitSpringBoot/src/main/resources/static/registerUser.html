@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html data-ng-app="getBenefit" >
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div data-ng-controller="myController">
+<form>
+		User Email: <input type="text" data-ng-model="u.emailid"><br>
+		Password: <input type="password" data-ng-model="u.password"><br>
+		<input type="button" value="Register" data-ng-click="register()">
+	</form>
+	
+	<form>
+		User Email: <input type="text" data-ng-model="u.emailid"><br>
+		Password: <input type="password" data-ng-model="u.password"><br>
+		<input type="button" value="Login" data-ng-click="login()">
+	</form>
+</div>
+<script src="/lib/angular.min.js"></script>
+<script type="text/javascript">
+
+var app=angular.module("getBenefit", []);
+
+angular.module("getBenefit").factory('myFac', function($http) {
+
+	var obj= {
+			addUser:addUser,
+			login:login
+	}
+	return obj;
+	
+	function addUser(data) {
+		return $http.post("http://localhost:8888/register", data).then(function(response) {
+			console.log("success");
+		}, function(response) {
+			console.log("error");
+		})
+		
+	}
+	
+	function login(data) {
+		return $http.post("http://localhost:8888/login", data).then(function(response) {
+			console.log("success");
+		}, function(response) {
+			console.log("error");
+		})
+		
+	}
+});
+
+angular.module("getBenefit").controller("myController", function($scope, $http, myFac) {
+	
+	$scope.register=function(){
+		console.log('clicked successful');
+		var promise = myFac.addUser($scope.u);
+		promise.then(function(res){
+			console.log('success');
+		})
+		
+	}
+	
+	
+	$scope.login=function(){
+		console.log('clicked successful');
+		var promise = myFac.login($scope.u);
+		promise.then(function(res){
+			console.log('success');
+		})
+		
+	}
+	
+});
+
+</script>
+
+</body>
+</html>
